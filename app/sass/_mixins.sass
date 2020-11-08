@@ -1,0 +1,16 @@
+=media-query($max)
+  @media screen and (max-width: $max)
+    @content
+
+=adaptive-font($fsMax, $fsMin, $lhMax, $lhMin, $maxWidth)
+  $addSize: $fsMax - $fsMin
+  $addHeight: $lhMax - $lhMin
+  $maxW: $maxWidth - 320
+  
+  font-size: calc(#{$fsMin + px} + #{$addSize} * ((100vw - 320px) / #{$maxW}))
+  line-height: calc(#{$lhMin + px} + #{$addHeight} * ((100vw - 320px) / #{$maxW}))
+
+=pseudo($content: '', $display: block, $pos: absolute)
+	content: $content
+	display: $display
+	position: $pos

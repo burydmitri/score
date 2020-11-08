@@ -1,0 +1,1 @@
+{"version":3,"sources":["_classes.sass","style.css"],"names":[],"mappings":"AACA;EACE,gBAAe;CCAhB","file":"style.css","sourcesContent":["// your base classes and style-settings\n.iOS {\n  cursor: pointer; }\n",".iOS {\n  cursor: pointer;\n}"]}
