@@ -1,0 +1,38 @@
+.header
+  display: flex
+  justify-content: center
+
+  &__logo
+    position: relative
+
+    font-size: 36px;
+    line-height: 43px;
+    color: $primary-color
+    text-decoration: none
+
+    margin: 15px 0
+
+    &::after,
+    &::before
+      @include pseudo
+
+      width: 6px;
+      height: 6px;
+
+      top: 17px
+      left: 50%
+      transform: translateX(-50%)
+      transition: $transition
+
+      border-radius: $border-radius
+      background-color: $text-color
+    &::before
+      top: 26px
+    
+    &:hover
+      &::after,
+      &::before
+        width: 12px
+        height: 12px
+        top: 50%
+        transform: translateX(-50%) translateY(-50%)
