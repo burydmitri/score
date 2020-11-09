@@ -54,6 +54,20 @@
 
     &:hover
       cursor: pointer
+      &::after,
+      &::before
+         animation: jelly-pop-add 0.5s;
+
+    @keyframes jelly-pop-add
+      0%,
+      100%
+        transform: translate(-50%, -50%) cale(1, 1)
+      25%
+        transform: translate(-50%, -50%) scale(0.9, 1.1)
+      50%
+        transform: translate(-50%, -50%) scale(1.1, 0.9)
+      75%
+        transform: translate(-50%, -50%) scale(0.95, 1.05)
 
     &::after,
     &::before
@@ -87,10 +101,12 @@
     border: 0
     outline: none
     color: $bg-color
+    transition: $transition
     background-color: $primary-color
 
     &:hover
       cursor: pointer
+      font-size: 32px
 
 
 

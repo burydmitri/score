@@ -306,6 +306,56 @@ body {
   cursor: pointer;
 }
 
+.pop-up__add:hover::after,
+.pop-up__add:hover::before {
+  -webkit-animation: jelly-pop-add 0.5s;
+          animation: jelly-pop-add 0.5s;
+}
+
+@-webkit-keyframes jelly-pop-add {
+  0%, 100% {
+    -webkit-transform: translate(-50%, -50%) cale(1, 1);
+            transform: translate(-50%, -50%) cale(1, 1);
+  }
+
+  25% {
+    -webkit-transform: translate(-50%, -50%) scale(0.9, 1.1);
+            transform: translate(-50%, -50%) scale(0.9, 1.1);
+  }
+
+  50% {
+    -webkit-transform: translate(-50%, -50%) scale(1.1, 0.9);
+            transform: translate(-50%, -50%) scale(1.1, 0.9);
+  }
+
+  75% {
+    -webkit-transform: translate(-50%, -50%) scale(0.95, 1.05);
+            transform: translate(-50%, -50%) scale(0.95, 1.05);
+  }
+}
+
+@keyframes jelly-pop-add {
+  0%, 100% {
+    -webkit-transform: translate(-50%, -50%) cale(1, 1);
+            transform: translate(-50%, -50%) cale(1, 1);
+  }
+
+  25% {
+    -webkit-transform: translate(-50%, -50%) scale(0.9, 1.1);
+            transform: translate(-50%, -50%) scale(0.9, 1.1);
+  }
+
+  50% {
+    -webkit-transform: translate(-50%, -50%) scale(1.1, 0.9);
+            transform: translate(-50%, -50%) scale(1.1, 0.9);
+  }
+
+  75% {
+    -webkit-transform: translate(-50%, -50%) scale(0.95, 1.05);
+            transform: translate(-50%, -50%) scale(0.95, 1.05);
+  }
+}
+
 .pop-up__add::after,
 .pop-up__add::before {
   content: "";
@@ -337,11 +387,14 @@ body {
   border: 0;
   outline: none;
   color: #FFFFFF;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   background-color: #E85A4F;
 }
 
 .pop-up__button:hover {
   cursor: pointer;
+  font-size: 32px;
 }
 
 .shadow {
