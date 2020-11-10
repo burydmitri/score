@@ -55,3 +55,98 @@
       &::before
         width: 10px
         height: 40px
+    
+.player
+  height: 150px
+
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  position: relative
+  overflow: hidden
+
+  border-radius: $border-radius
+  background-color: $secondary-color
+
+  &:hover 
+    cursor: pointer
+    animation: jelly 0.5s
+
+    .player__add,
+    .player__subtract
+      transform: translateX(0)
+
+  &__name
+    font-size: 24px
+    line-height: 29px
+    color: $text-color
+    text-transform: uppercase
+
+    margin-bottom: 17px
+  &__score
+    font-size: 48px;
+    line-height: 58px;
+    color: $primary-color
+    text-transform: uppercase
+  &__add,
+  &__subtract 
+    width: 50%
+    height: 100%
+
+    position: absolute
+    top: 0
+
+    transition: $transition
+    background-color: $primary-color
+
+    &:hover
+      &::after,
+      &::before
+        transform: translate(-50%, -50%) scale(1.25)
+    &:active
+      &::after,
+      &::before
+        transform: translate(-50%, -50%) scale(0.9)
+      
+
+  &__add
+    right: 0
+    transform: translateX(101%)
+
+    &::after,
+    &::before
+      +pseudo
+
+      width: 40px
+      height: 10px
+
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      transition: $transition
+
+      background-color: $secondary-color
+    &::before
+      width: 10px
+      height: 40px
+  &__subtract
+    left: 0
+    background-color: $secondary-color
+    transform: translateX(-101%)
+
+    &::before
+      +pseudo
+
+      width: 40px
+      height: 10px
+
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      transition: $transition / 2
+
+      background-color: $primary-color
+
+
+
