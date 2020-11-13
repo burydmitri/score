@@ -3,16 +3,21 @@
   max-width: 500px
 
   position: absolute
-  top: 50%
+  top: 0
   left: 50%
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -100%)
   z-index: 10
 
   overflow: hidden
   background-color: $bg-color
   border-radius: $border-radius
+  transition: $transition ease-out
 
   padding: 15px 20px 85px
+
+  &--active
+    top: 50%
+    transform: translate(-50%, -50%)
 
   &__form
     display: flex
@@ -120,6 +125,12 @@
   position: absolute
   top: 0
   left: 0
-  z-index: 5
+  z-index: -1
 
-  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0
+  transition: $transition
+  background-color: rgba(0, 0, 0, 0.3)
+
+  &--active
+    z-index: 5
+    opacity: 1

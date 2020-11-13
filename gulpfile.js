@@ -77,7 +77,7 @@ function es6() {
     )
     .pipe(ext_replace('.js', '.es6.js'))
     .pipe(rename({ suffix: '.es5' }))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('app/js'))
     .pipe(browserSync.stream());
 }

@@ -29,37 +29,45 @@
     <header class="header wrap">
       <a href="#" class="header__logo">SC&nbsp;&nbsp;&nbsp;RE</a>
     </header>
-    <main class="main wrap">
-      <div class="main__item">domino</div>
+    <main id="home" class="main wrap">
+      <div 
+        v-for="game of games"
+        class="main__item">
+        {{ game }}
+      </div>
+      <div class="main__item main__item--add" @click="toggleMenu"></div>
+
+      <div class="pop-up" :class="{ 'pop-up--active': showMenu }">
+        <form class="pop-up__form" action="submit">
+          <h2 class="pop-up__title">
+            CREATE A GAME
+          </h2>
+          <input class="pop-up__input" type="text" placeholder="NAME OF THE GAME">
+          <h2 class="pop-up__subtitle">
+            PLAYERS
+          </h2>
+          <input class="pop-up__input" type="text" placeholder="NAME OF PLAYER">
+          <div class="pop-up__add" type="text"></div>
+          <button type="submit" class="pop-up__button" @click="toggleMenu">CREATE</button>
+        </form>
+      </div>
+      <div class="shadow" :class="{ 'shadow--active': showMenu }" @click="toggleMenu"></div>
+
+
+      <!-- <div class="main__item">domino</div>
       <div class="main__item main__item--add"></div>
       <div class="player main__player">
         <span class="player__name">ANNA</span>
         <span class="player__score">20</span>
         <div class="player__add"></div>
         <div class="player__subtract"></div>
-      </div>
+      </div> -->
     </main>
     <footer class="footer">
       <a class="footer__link" href="https://github.com/burydmitri/score">
         <img class="footer__icon" src="./img/dist/github.png" alt="github">
       </a>
     </footer>
-
-    <!-- <div class="pop-up">
-      <form class="pop-up__form" action="submit">
-        <h2 class="pop-up__title">
-          CREATE A GAME
-        </h2>
-        <input class="pop-up__input" type="text" placeholder="NAME OF THE GAME">
-        <h2 class="pop-up__subtitle">
-          PLAYERS
-        </h2>
-        <input class="pop-up__input" type="text" placeholder="NAME OF PLAYER">
-        <div class="pop-up__add" type="text"></div>
-        <button type="submit" class="pop-up__button">CREATE</button>
-      </form>
-    </div>
-    <div class="shadow"></div> -->
 
     <!-- libs-->
     <script src="https://unpkg.com/vue@next"></script>

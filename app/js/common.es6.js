@@ -1,11 +1,31 @@
-// Your Vue app
-// (function () {
-//   const your-app = Vue.createApp({});
-//   your-app.mount('#app');
-// }());
+// localStorage.setItem('score/games', JSON.stringify([1, 2, 3, 4]));
+
+//vue apps
+const home = Vue.createApp({
+  data() {
+    return {
+      games: [],
+      showMenu: true
+    }
+  },
+  async mounted() {
+    await this.fetchGames()
+  },
+  methods: {
+    fetchGames() {
+      this.games = JSON.parse(localStorage.getItem('score/games'))
+      console.log(this.games)
+    },
+    toggleMenu() {
+      this.showMenu = !this.showMenu
+    }
+  }
+})
+
+home.mount('#home')
 
 // check isTouch and isIOS
-(function () {
+function isTouchIOS() {
   const body = document.body;
   const isTouch = (function() {
     let check = false;
@@ -29,4 +49,6 @@
   } else {
     body.classList.add('no-iOS');
   }
-}());
+}
+
+isTouchIOS()
