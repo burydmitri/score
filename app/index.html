@@ -33,22 +33,22 @@
       <div 
         v-for="game of games"
         class="main__item">
-        {{ game }}
+        {{ game.title }}
       </div>
       <div class="main__item main__item--add" @click="toggleMenu"></div>
 
       <div class="pop-up" :class="{ 'pop-up--active': showMenu }">
-        <form class="pop-up__form" action="submit">
+        <form class="pop-up__form">
           <h2 class="pop-up__title">
             CREATE A GAME
           </h2>
-          <input class="pop-up__input" type="text" placeholder="NAME OF THE GAME">
+          <input class="pop-up__input" type="text" placeholder="NAME OF THE GAME" v-model="formData.title">
           <h2 class="pop-up__subtitle">
             PLAYERS
           </h2>
-          <input class="pop-up__input" type="text" placeholder="NAME OF PLAYER">
+          <input class="pop-up__input" type="text" placeholder="NAME OF PLAYER" v-model="formData.players[0].name">
           <div class="pop-up__add" type="text"></div>
-          <button type="submit" class="pop-up__button" @click="toggleMenu">CREATE</button>
+          <div class="pop-up__button" @click="createGame">CREATE</div>
         </form>
       </div>
       <div class="shadow" :class="{ 'shadow--active': showMenu }" @click="toggleMenu"></div>

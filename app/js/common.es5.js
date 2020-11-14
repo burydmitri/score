@@ -7,7 +7,11 @@ var home = Vue.createApp({
   data: function data() {
     return {
       games: [],
-      showMenu: true
+      showMenu: true,
+      formData: {
+        title: '',
+        players: [{ name: '', scores: 0 }]
+      }
     };
   },
   mounted: async function mounted() {
@@ -18,9 +22,17 @@ var home = Vue.createApp({
     fetchGames: function fetchGames() {
       this.games = JSON.parse(localStorage.getItem('score/games'));
       console.log(this.games);
+
+      if (!this.games) this.games = [];
     },
     toggleMenu: function toggleMenu() {
       this.showMenu = !this.showMenu;
+    },
+    createGame: function createGame() {
+      this.games.push(this.formData);
+      localStorage.setItem('score/games', JSON.stringify(this.games));
+
+      this.toggleMenu();
     }
   }
 });
