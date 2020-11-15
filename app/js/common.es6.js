@@ -57,11 +57,17 @@ const game = Vue.createApp({
   methods: {
     fetchGame() {
       this.games = JSON.parse(localStorage.getItem('score/games'))
-      console.log(this.game)
       this.game = this.games.filter(g => g.title == localStorage.getItem('score/current'))[0]
-    
       console.log(this.game)
     },
+    addScore(id) {
+      this.game.players[id].scores++
+      localStorage.setItem('score/games', JSON.stringify(this.games))
+    },
+    subtractScore(id) {
+      this.game.players[id].scores--
+      localStorage.setItem('score/games', JSON.stringify(this.games))
+    }
   }
 })
 

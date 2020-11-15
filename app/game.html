@@ -27,15 +27,15 @@
   </head>
   <body>
     <header class="header wrap">
-      <a href="/" class="header__logo">SC&nbsp;&nbsp;&nbsp;RE</a>
+      <a href="http://localhost:3000/" class="header__logo">SC&nbsp;&nbsp;&nbsp;RE</a>
     </header>
     
     <main id="game" class="main wrap">
       <div v-for="player of game.players" class="player main__player">
         <span class="player__name">{{ player.name }}</span>
         <span class="player__score">{{ player.scores }}</span>
-        <div class="player__add"></div>
-        <div class="player__subtract"></div>
+        <div class="player__add" @click="addScore(game.players.indexOf(player))"></div>
+        <div class="player__subtract" @click="subtractScore(game.players.indexOf(player))"></div>
       </div>
     </main>
 
