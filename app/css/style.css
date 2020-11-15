@@ -124,6 +124,7 @@ body {
   color: #FFFFFF;
   border-radius: 10px;
   background-color: #E85A4F;
+  text-decoration: none;
 }
 
 .main__item:hover {

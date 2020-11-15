@@ -7,7 +7,7 @@ var home = Vue.createApp({
   data: function data() {
     return {
       games: [],
-      showMenu: true,
+      showMenu: false,
       formData: {
         title: '',
         players: [{ name: '', scores: 0 }]
@@ -33,11 +33,43 @@ var home = Vue.createApp({
       localStorage.setItem('score/games', JSON.stringify(this.games));
 
       this.toggleMenu();
+    },
+    currentGame: function currentGame(game) {
+      localStorage.setItem('score/current', game);
+
+      document.location.href = document.location.href + 'game.html';
+      console.log(document.location.href);
     }
   }
 });
 
 home.mount('#home');
+
+var game = Vue.createApp({
+  data: function data() {
+    return {
+      game: {},
+      games: []
+    };
+  },
+  mounted: async function mounted() {
+    await this.fetchGame();
+  },
+
+  methods: {
+    fetchGame: function fetchGame() {
+      this.games = JSON.parse(localStorage.getItem('score/games'));
+      console.log(this.game);
+      this.game = this.games.filter(function (g) {
+        return g.title == localStorage.getItem('score/current');
+      })[0];
+
+      console.log(this.game);
+    }
+  }
+});
+
+game.mount('#game');
 
 // check isTouch and isIOS
 function isTouchIOS() {

@@ -5,7 +5,7 @@ const home = Vue.createApp({
   data() {
     return {
       games: [],
-      showMenu: true,
+      showMenu: false,
       formData: {
         title: '',
         players: [
@@ -32,11 +32,40 @@ const home = Vue.createApp({
       localStorage.setItem('score/games', JSON.stringify(this.games))
 
       this.toggleMenu()
+    },
+    currentGame(game) {
+      localStorage.setItem('score/current', game)
+
+      document.location.href = `${document.location.href}game.html`
+      console.log(document.location.href)
     }
   }
 })
 
 home.mount('#home')
+
+const game = Vue.createApp({
+  data() {
+    return {
+      game: {},
+      games: [],
+    }
+  },
+  async mounted() {
+    await this.fetchGame()
+  },
+  methods: {
+    fetchGame() {
+      this.games = JSON.parse(localStorage.getItem('score/games'))
+      console.log(this.game)
+      this.game = this.games.filter(g => g.title == localStorage.getItem('score/current'))[0]
+    
+      console.log(this.game)
+    },
+  }
+})
+
+game.mount('#game')
 
 // check isTouch and isIOS
 function isTouchIOS() {
