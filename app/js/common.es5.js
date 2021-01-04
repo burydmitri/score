@@ -10,7 +10,8 @@ var home = Vue.createApp({
       showMenu: false,
       formData: {
         title: '',
-        players: [{ name: '', scores: 0 }]
+        players: [{ name: '', scores: 0 }],
+        id: 0
       }
     };
   },
@@ -39,6 +40,10 @@ var home = Vue.createApp({
 
       document.location.href = document.location.href + 'game.html';
       console.log(document.location.href);
+    },
+    addPlayer: function addPlayer() {
+      var player = { name: '', scores: 0 };
+      this.formData.players.push(player);
     }
   }
 });

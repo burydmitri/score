@@ -31,7 +31,7 @@
     </header>
     <main id="home" class="main wrap">
       <a 
-        href="game"
+        href="game.html"
         v-for="game of games"
         class="main__item"
         @click.prevent="currentGame(game.title)">
@@ -48,12 +48,17 @@
           <h2 class="pop-up__subtitle">
             PLAYERS
           </h2>
-          <input class="pop-up__input" type="text" placeholder="NAME OF PLAYER" v-model="formData.players[0].name">
-          <div class="pop-up__add" type="text"></div>
+          <input
+            v-for="player of formData.players"
+            class="pop-up__input"
+            type="text" placeholder="NAME OF PLAYER"
+            v-model="player.name"
+          >
+          <div class="pop-up__add" type="text" @click="addPlayer"></div>
           <div class="pop-up__button" @click="createGame">CREATE</div>
         </form>
       </div>
-      
+
       <div class="shadow" :class="{ 'shadow--active': showMenu }" @click="toggleMenu"></div>
     </main>
     <footer class="footer">
