@@ -2,7 +2,7 @@
   width: 100%
   max-width: 500px
 
-  position: absolute
+  position: fixed
   top: 0
   left: 50%
   transform: translate(-50%, -100%)
@@ -20,9 +20,13 @@
     transform: translate(-50%, -50%)
 
   &__form
+    max-height: 70vh
+
     display: flex
     flex-direction: column
     align-items: center
+
+    overflow: auto
   &__title
     font-size: 24px
     line-height: 29px
@@ -42,6 +46,7 @@
     border: 0
     outline: none
     font-size: 18px
+    font-weight: 700
     line-height: 22px
     text-align: center
     color: $text-color
@@ -52,7 +57,7 @@
     margin: 0 0 10px
     padding: 9px 9px
   &__add
-    height: 40px
+    min-height: 40px
     padding: 0
 
     position: relative

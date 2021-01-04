@@ -28,12 +28,19 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: 'Barlow';
+  position: relative;
+  font-family: 'Barlow', Arial;
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 29px;
   text-transform: uppercase;
+}
+
+.body--noscroll {
+  max-height: 100vh;
+  height: 100%;
+  overflow: hidden;
 }
 
 .wrap {
@@ -104,7 +111,7 @@ body {
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   padding-top: 100px;
-  padding-bottom: 50px;
+  padding-bottom: 75px;
 }
 
 .main__item {
@@ -370,7 +377,7 @@ body {
 .pop-up {
   width: 100%;
   max-width: 500px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 50%;
   -webkit-transform: translate(-50%, -100%);
@@ -393,6 +400,7 @@ body {
 }
 
 .pop-up__form {
+  max-height: 70vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -406,6 +414,7 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: auto;
 }
 
 .pop-up__title {
@@ -428,6 +437,7 @@ body {
   border: 0;
   outline: none;
   font-size: 18px;
+  font-weight: 700;
   line-height: 22px;
   text-align: center;
   color: #8E8D8A;
@@ -439,7 +449,7 @@ body {
 }
 
 .pop-up__add {
-  height: 40px;
+  min-height: 40px;
   padding: 0;
   position: relative;
 }

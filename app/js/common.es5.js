@@ -28,6 +28,8 @@ var home = Vue.createApp({
     },
     toggleMenu: function toggleMenu() {
       this.showMenu = !this.showMenu;
+
+      if (this.showMenu) document.body.classList.add("body--noscroll");else document.body.classList.remove("body--noscroll");
     },
     createGame: function createGame() {
       this.games.push(this.formData);
