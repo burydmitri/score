@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <!--<![endif]-->
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Главная страница</title>
+    <title>Open-sourse counter for the table games</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <link
@@ -21,24 +21,54 @@
     <meta name="msapplication-TileColor" content="#b91d47">
     <meta name="theme-color" content="#ffffff">
     <!-- css libs-->
+    <link property="stylesheet" href="./libs/normalize.min.css" rel="stylesheet" />
     <!-- user css-->
     <link property="stylesheet" href="./css/style.min.css" rel="stylesheet" />
   </head>
   <body>
-    <!-- Header start -->
-    <header class="header"></header>
-    <!-- Header end -->
+    <header class="header wrap">
+      <a href="" class="header__logo">SC&nbsp;&nbsp;&nbsp;RE</a>
+    </header>
+    <main id="home" class="main wrap">
+      <a 
+        href="game.html"
+        v-for="game of games"
+        class="main__item"
+        @click.prevent="currentGame(game.title)">
+        {{ game.title }}
+      </a>
+      <div class="main__item main__item--add" @click="toggleMenu"></div>
 
-    <!-- Main start -->
-    <main class="start"></main>
-    <!-- Main end -->
+      <div class="pop-up" :class="{ 'pop-up--active': showMenu }">
+        <form class="pop-up__form">
+          <h2 class="pop-up__title">
+            CREATE A GAME
+          </h2>
+          <input class="pop-up__input" type="text" placeholder="NAME OF THE GAME" v-model="formData.title">
+          <h2 class="pop-up__subtitle">
+            PLAYERS
+          </h2>
+          <input
+            v-for="player of formData.players"
+            class="pop-up__input"
+            type="text" placeholder="NAME OF PLAYER"
+            v-model="player.name"
+          >
+          <div class="pop-up__add" type="text" @click="addPlayer"></div>
+          <div class="pop-up__button" @click="createGame">CREATE</div>
+        </form>
+      </div>
 
-    <!-- Footer start -->
-    <footer class="footer"></footer>
-    <!-- Footer end -->
+      <div class="shadow" :class="{ 'shadow--active': showMenu }" @click="toggleMenu"></div>
+    </main>
+    <footer class="footer">
+      <a class="footer__link" href="https://github.com/burydmitri/score">
+        <img class="footer__icon" src="./img/dist/github.png" alt="github">
+      </a>
+    </footer>
 
     <!-- libs-->
-    <script src="./libs/jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
     <!-- user scripts-->
     <script src="./js/common.es5.js"></script>
   </body>

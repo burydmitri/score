@@ -1,5 +1,88 @@
+// localStorage.setItem('score/games', JSON.stringify([1, 2, 3, 4]));
+
+//vue apps
+const home = Vue.createApp({
+  data() {
+    return {
+      games: [],
+      showMenu: false,
+      formData: {
+        title: '',
+        players: [
+          { name: '', scores: 0 },
+        ],
+        id: 0,
+      }
+    }
+  },
+  async mounted() {
+    await this.fetchGames()
+  },
+  methods: {
+    fetchGames() {
+      this.games = JSON.parse(localStorage.getItem('score/games'))
+      console.log(this.games)
+
+      if (!this.games) this.games = []
+    },
+    toggleMenu() {
+      this.showMenu = !this.showMenu
+
+      if (this.showMenu) document.body.classList.add("body--noscroll")
+      else document.body.classList.remove("body--noscroll")
+    },
+    createGame() {
+      this.games.push(this.formData)
+      localStorage.setItem('score/games', JSON.stringify(this.games))
+
+      this.toggleMenu()
+    },
+    currentGame(game) {
+      localStorage.setItem('score/current', game)
+
+      document.location.href = `${document.location.href}game.html`
+      console.log(document.location.href)
+    },
+    addPlayer() {
+      let player = { name: '', scores: 0 }
+      this.formData.players.push(player)
+    }
+  }
+})
+
+home.mount('#home')
+
+const game = Vue.createApp({
+  data() {
+    return {
+      game: {},
+      games: [],
+    }
+  },
+  async mounted() {
+    await this.fetchGame()
+  },
+  methods: {
+    fetchGame() {
+      this.games = JSON.parse(localStorage.getItem('score/games'))
+      this.game = this.games.filter(g => g.title == localStorage.getItem('score/current'))[0]
+      console.log(this.game)
+    },
+    addScore(id) {
+      this.game.players[id].scores++
+      localStorage.setItem('score/games', JSON.stringify(this.games))
+    },
+    subtractScore(id) {
+      this.game.players[id].scores--
+      localStorage.setItem('score/games', JSON.stringify(this.games))
+    }
+  }
+})
+
+game.mount('#game')
+
 // check isTouch and isIOS
-(function () {
+function isTouchIOS() {
   const body = document.body;
   const isTouch = (function() {
     let check = false;
@@ -23,4 +106,6 @@
   } else {
     body.classList.add('no-iOS');
   }
-}());
+}
+
+isTouchIOS()
