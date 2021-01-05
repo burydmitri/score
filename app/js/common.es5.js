@@ -82,7 +82,6 @@ var game = Vue.createApp({
       this.game = this.games.filter(function (g) {
         return g.title == localStorage.getItem('score/current');
       })[0];
-      console.log(this.game);
     },
     addScore: function addScore(id) {
       this.game.players[id].scores++;
@@ -96,6 +95,16 @@ var game = Vue.createApp({
 });
 
 game.mount('#game');
+
+var gameTitle = Vue.createApp({
+  data: function data() {
+    return {
+      title: localStorage.getItem('score/current')
+    };
+  }
+});
+
+gameTitle.mount('#gameTitle');
 
 // check isTouch and isIOS
 function isTouchIOS() {

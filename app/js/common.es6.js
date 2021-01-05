@@ -78,7 +78,6 @@ const game = Vue.createApp({
     fetchGame() {
       this.games = JSON.parse(localStorage.getItem('score/games'))
       this.game = this.games.filter(g => g.title == localStorage.getItem('score/current'))[0]
-      console.log(this.game)
     },
     addScore(id) {
       this.game.players[id].scores++
@@ -92,6 +91,16 @@ const game = Vue.createApp({
 })
 
 game.mount('#game')
+
+const gameTitle = Vue.createApp({
+  data() {
+    return {
+      title: localStorage.getItem('score/current')
+    }
+  },
+})
+
+gameTitle.mount('#gameTitle')
 
 // check isTouch and isIOS
 function isTouchIOS() {
