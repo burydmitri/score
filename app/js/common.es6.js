@@ -11,8 +11,8 @@ const home = Vue.createApp({
         players: [
           { name: '', scores: 0 },
         ],
-        id: 0,
-      }
+      },
+      gameMenu: null,
     }
   },
   async mounted() {
@@ -46,7 +46,19 @@ const home = Vue.createApp({
     addPlayer() {
       let player = { name: '', scores: 0 }
       this.formData.players.push(player)
+    },
+    openGameMenu(game) {
+      this.gameMenu = game
+    },
+    closeGameMenu() {
+      this.gameMenu = null
+    },
+    deleteGame(game) {
+      let id = this.games.findIndex(item => item.title == game);
+      this.games.splice(id, 1)
+      localStorage.setItem('score/games', JSON.stringify(this.games))
     }
+
   }
 })
 

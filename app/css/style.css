@@ -129,6 +129,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
+  overflow: hidden;
   color: #FFFFFF;
   border-radius: 10px;
   background-color: #E85A4F;
@@ -207,6 +208,60 @@ body {
 .main__item--add::before {
   width: 10px;
   height: 40px;
+}
+
+.item__buttons {
+  width: 40%;
+  height: 43px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  position: absolute;
+  right: -100%;
+  top: -10px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  padding: 10px 20px 10px 0;
+}
+
+.item__buttons--active {
+  right: -10px;
+}
+
+.item__delete {
+  width: 17px;
+  height: 17px;
+  position: relative;
+}
+
+.item__delete span {
+  width: 21px;
+  height: 3px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  background: #E85A4F;
+}
+
+.item__delete span:last-child {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 .player {

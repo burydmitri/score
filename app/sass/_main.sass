@@ -17,6 +17,7 @@
     justify-content: center
 
     position: relative
+    overflow: hidden
 
     color: $bg-color
     border-radius: $border-radius
@@ -56,7 +57,49 @@
       &::before
         width: 10px
         height: 40px
-    
+
+.item
+  &__buttons
+    width: 40%
+    height: 43px
+
+    display: flex
+    justify-content: flex-end
+    align-items: flex-end
+
+    position: absolute
+    right: -100%
+    top: -10px
+
+    background: $bg-color
+    border-radius: $border-radius
+    transition: $transition
+
+    padding: 10px 20px 10px 0
+
+    &--active
+      right: -10px
+
+  &__delete
+    width: 17px
+    height: 17px
+    position: relative
+    span
+      width: 21px
+      height: 3px
+
+      display: block
+
+      position: absolute
+      top: 50%
+      left: 0
+
+      transform: rotate(45deg)
+
+      background: $primary-color
+      &:last-child
+        transform: rotate(-45deg)
+
 .player
   height: 150px
 

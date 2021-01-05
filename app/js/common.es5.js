@@ -10,9 +10,9 @@ var home = Vue.createApp({
       showMenu: false,
       formData: {
         title: '',
-        players: [{ name: '', scores: 0 }],
-        id: 0
-      }
+        players: [{ name: '', scores: 0 }]
+      },
+      gameMenu: null
     };
   },
   mounted: async function mounted() {
@@ -46,6 +46,19 @@ var home = Vue.createApp({
     addPlayer: function addPlayer() {
       var player = { name: '', scores: 0 };
       this.formData.players.push(player);
+    },
+    openGameMenu: function openGameMenu(game) {
+      this.gameMenu = game;
+    },
+    closeGameMenu: function closeGameMenu() {
+      this.gameMenu = null;
+    },
+    deleteGame: function deleteGame(game) {
+      var id = this.games.findIndex(function (item) {
+        return item.title == game;
+      });
+      this.games.splice(id, 1);
+      localStorage.setItem('score/games', JSON.stringify(this.games));
     }
   }
 });
